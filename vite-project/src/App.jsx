@@ -1,10 +1,18 @@
-import Layout from "./components/Layout";
+import React from "react";
+import Header from "./components/Header";
+import { Footer } from "./components/Footer";
+import ProductPage from "./pages/ProductPage.jsx";
 
 export default function App() {
   return (
-    <Layout>
-      <h1>Welcome to My Shop</h1>
-      <p>Your one-stop shop for all your needs!</p>
-    </Layout>
+    <div className="flex flex-col min-h-screen">
+      <Header />
+
+      <main className="flex-grow p-4">
+        <ProductPage />
+      </main>
+
+      <Footer />
+    </div>
   );
 }
