@@ -1,5 +1,3 @@
-// api/productsApi.jsx
-
 const url = "https://v2.api.noroff.dev/online-shop";
 const API_KEY = import.meta.env.VITE_API_KEY;
 
@@ -17,6 +15,5 @@ export async function getProducts() {
 
   const json = await response.json();
 
-  // Noroff API returnerer data i `json.data`
   return json.data;
 }
