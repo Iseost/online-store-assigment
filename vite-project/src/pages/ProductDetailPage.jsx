@@ -1,10 +1,9 @@
-// pages/ProductDetailPage.jsx
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { getProduct } from "../api/productsApi.jsx";
 
 export default function ProductDetailPage() {
-  const { id } = useParams(); // henter :id fra URL
+  const { id } = useParams();
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -13,7 +12,7 @@ export default function ProductDetailPage() {
     async function fetchProduct() {
       try {
         const data = await getProduct(id);
-        setProduct(data.data); // Noroff API returnerer data under .data
+        setProduct(data.data);
       } catch (err) {
         setError(err.message);
       } finally {
@@ -29,6 +28,9 @@ export default function ProductDetailPage() {
 
   return (
     <div className="max-w-2xl mx-auto p-4">
+      <Link to="/products" className="text-blue-600 underline mb-4 block">
+        &larr; Back to Products
+      </Link>
       <img
         src={product.image?.url}
         alt={product.title}

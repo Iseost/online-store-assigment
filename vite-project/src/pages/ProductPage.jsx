@@ -1,5 +1,6 @@
 import React from "react";
-import { useProducts } from "../pages/useProducts.js";
+import { useProducts } from "../hooks/useProducts";
+import ProductCard from "../components/ProductCard";
 
 export default function ProductPage() {
   const { products, loading, error } = useProducts();
@@ -15,20 +16,6 @@ export default function ProductPage() {
           <ProductCard key={product.id} product={product} />
         ))}
       </div>
-    </div>
-  );
-}
-
-function ProductCard({ product }) {
-  return (
-    <div className="border p-4 rounded shadow">
-      <img
-        src={product.image?.url}
-        alt={product.title}
-        className="w-full h-48 object-cover rounded"
-      />
-      <h2 className="text-lg font-semibold mt-2">{product.title}</h2>
-      <p className="mt-1">{product.price} NOK</p>
     </div>
   );
 }
