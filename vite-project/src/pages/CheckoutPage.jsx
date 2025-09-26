@@ -3,7 +3,7 @@ import { useCart } from "../context/CartContext";
 import { useNavigate, Link } from "react-router-dom";
 
 export default function CheckoutPage() {
-  const { cart, clearCart } = useCart();
+  const { cart, clearCart, removeFromCart } = useCart();
   const navigate = useNavigate();
 
   const totalPrice = cart.reduce((sum, item) => sum + item.price, 0);
@@ -23,9 +23,23 @@ export default function CheckoutPage() {
         <>
           <ul className="mb-6 divide-y text-[#3B322F]">
             {cart.map((item) => (
-              <li key={item.cartItemId} className="py-3 flex justify-between">
+              <li
+                key={item.cartItemId}
+                className="py-3 flex items-center gap-4"
+              >
+                <img
+                  src={item.image?.url}
+                  alt={item.title}
+                  className="w-16 h-16 object-cover rounded"
+                />
                 <span>{item.title}</span>
                 <span>{item.price} NOK</span>
+                <button
+                  onClick={() => removeFromCart(item.cartItemId)}
+                  className="text-sm font-semibold text-red-500 hover:text-red-700"
+                >
+                  Remove
+                </button>
               </li>
             ))}
           </ul>
