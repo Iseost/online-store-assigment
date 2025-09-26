@@ -1,5 +1,5 @@
 // src/context/CartContext.jsx
-import React, { createContext, useContext, useReducer } from "react";
+import { createContext, useContext, useReducer } from "react";
 import { v4 as uuidv4 } from "uuid";
 
 const CartContext = createContext();
@@ -16,7 +16,7 @@ function cartReducer(state, action) {
     case "REMOVE_FROM_CART":
       return state.filter((item) => item.cartItemId !== action.payload);
     case "CLEAR_CART":
-      return []; // tømming av handlekurv
+      return [];
     default:
       return state;
   }

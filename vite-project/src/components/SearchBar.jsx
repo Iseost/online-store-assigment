@@ -2,8 +2,6 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useProducts } from "../hooks/useProducts";
 
-//The homepage should have a lookahead/auto-complete Search bar component. Typing values in the search bar should display products where the title matches the search input. Clicking on an item should take the user to the ProductPage page. Tip: Filter the user input and then display products that match the input.
-
 export default function SearchBar() {
   const [query, setQuery] = useState("");
   const [showResults, setShowResults] = useState(false);
@@ -20,7 +18,7 @@ export default function SearchBar() {
     setShowResults(false);
   };
   return (
-    <div className="relative w-full max-w-md flex mx-auto mb-4">
+    <div className="w-full max-w-md flex mx-auto mb-4">
       <input
         type="text"
         value={query}
@@ -28,9 +26,9 @@ export default function SearchBar() {
           setQuery(e.target.value);
           setShowResults(true);
         }}
-        onBlur={() => setTimeout(() => setShowResults(false), 100)} // Delay to allow click
+        onBlur={() => setTimeout(() => setShowResults(false), 100)}
         placeholder="Search products..."
-        className="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+        className="w-full border border-[#E5E5E5] rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-[#E07A5F]"
       />
       {showResults && query && (
         <ul className="absolute z-10 w-full bg-white border border-gray-300 rounded mt-1 max-h-60 overflow-y-auto">

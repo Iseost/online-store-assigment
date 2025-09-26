@@ -11,13 +11,13 @@ export default function ProductCard({ product = {} }) {
       <img
         src={imageUrl}
         alt={title}
-        className="w-full h-48 object-contain mb-4"
+        className="w-full h-48 object-cover rounded-xl mb-4"
       />
       <h2 className="text-lg font-semibold mb-2">{title}</h2>
       <p className="font-bold mt-2">${price}</p>
       <Link
         to={id ? `/products/${id}` : "#"}
-        className="mt-4 bg-blue-500 text-white py-2 px-4 rounded text-center"
+        className="bg-[#E07A5F] hover:bg-[#C75B3E] text-white font-semibold py-2 px-4 rounded-md mt-4 text-center"
       >
         View Details
       </Link>

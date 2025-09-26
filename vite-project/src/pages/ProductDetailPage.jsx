@@ -30,7 +30,7 @@ export default function ProductDetailPage() {
 
   return (
     <div className="max-w-2xl mx-auto p-4">
-      <Link to="/products" className="text-blue-600 underline mb-4 block">
+      <Link to="/products" className="text-gray-500 underline mb-4 block">
         &larr; Back to Products
       </Link>
       <img
@@ -38,13 +38,15 @@ export default function ProductDetailPage() {
         alt={product.title}
         className="w-full h-80 object-cover rounded shadow"
       />
-      <h1 className="text-2xl font-bold mt-4">{product.title}</h1>
-      <p className="text-lg mt-2">{product.price} NOK</p>
-      <p className="mt-4 text-gray-700">{product.description}</p>
+      <h1 className="text-2xl font-bold mt-4 text-[#3B322F]">
+        {product.title}
+      </h1>
+      <p className="text-lg mt-2 text-[#3B322F]">{product.price} NOK</p>
+      <p className="mt-4 text-[#3B322F]">{product.description}</p>
 
       <button
         onClick={() => addToCart(product)}
-        className="mt-4 bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700"
+        className="bg-[#F2A65A] hover:bg-[#E6893B] text-white font-semibold py-2 px-4 mt-4 rounded-md"
       >
         Add to cart
       </button>

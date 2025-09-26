@@ -51,10 +51,10 @@ export default function ContactPage() {
   };
 
   return (
-    <div className="max-w-lg mx-auto p-4">
+    <div className="max-w-lg mx-auto p-4 text-[#3B322F]">
       <h1 className="text-2xl font-bold mb-4">Contact Us</h1>
       {submitted && (
-        <div className="mb-4 p-4 bg-green-100 text-green-800 border border-green-300 rounded">
+        <div className="mb-4 p-4 bg-[#F5F3EE] text-[#3B322F] border border-[#E5E2DC] rounded">
           Thank you for your message! We will get back to you soon.
         </div>
       )}
@@ -133,7 +133,7 @@ export default function ContactPage() {
         </div>
         <button
           type="submit"
-          className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
+          className="bg-[#E07A5F] hover:bg-[#C75B3E] text-white font-semibold px-4 py-2 rounded"
         >
           Submit
         </button>

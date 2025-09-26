@@ -15,7 +15,7 @@ export default function App() {
       <div className="flex flex-col min-h-screen">
         <Header />
 
-        <main className="flex-grow p-4">
+        <main className="flex-grow p-4 bg-[#FAF9F6]">
           <Routes>
             <Route path="/" element={<ProductPage />} />
             <Route path="/products" element={<ProductPage />} />
