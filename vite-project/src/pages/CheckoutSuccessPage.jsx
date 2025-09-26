@@ -1,32 +1,21 @@
 // src/pages/CheckoutSuccessPage.jsx
-import React from "react";
 import { Link } from "react-router-dom";
 
 export default function CheckoutSuccessPage() {
   return (
-    <div className="max-w-xl mx-auto p-6 text-center">
-      <h1 className="text-3xl font-bold mb-4 text-green-600">
-        ✅ Checkout Complete!
+    <div className="max-w-xl mx-auto p-6 bg-white shadow rounded text-center">
+      <h1 className="text-2xl font-bold text-green-700 mb-4">
+        🎉 Checkout Successful!
       </h1>
-      <p className="mb-6 text-gray-700">
-        Thank you for your purchase. Your order has been successfully placed.
+      <p className="text-gray-700 mb-6">
+        Thank you for your purchase. Your order is being processed.
       </p>
-
-      <div className="flex justify-center gap-4">
-        <Link
-          to="/products"
-          className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
-        >
-          Continue Shopping
-        </Link>
-
-        <Link
-          to="/orders"
-          className="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700"
-        >
-          View Orders
-        </Link>
-      </div>
+      <Link
+        to="/products"
+        className="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700"
+      >
+        Continue Shopping
+      </Link>
     </div>
   );
 }

@@ -1,69 +1,56 @@
-// src/pages/CartPage.jsx
-import React from "react";
+// src/pages/CheckoutPage.jsx
 import { useCart } from "../context/CartContext";
-import { Link } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
-export default function CartPage() {
-  const { cart, removeFromCart } = useCart();
+export default function CheckoutPage() {
+  const { cart, clearCart } = useCart();
+  const navigate = useNavigate();
 
-  if (cart.length === 0)
-    return (
-      <div className="p-4 max-w-2xl mx-auto">
-        <h1 className="text-2xl font-bold mb-4">Your Cart</h1>
-        <p>Your cart is empty.</p>
-        <Link
-          to="/products"
-          className="text-blue-600 underline mt-2 inline-block"
-        >
-          &larr; Back to Products
-        </Link>
-      </div>
-    );
+  const totalPrice = cart.reduce((sum, item) => sum + item.price, 0);
+
+  const handleCheckout = () => {
+    clearCart();
+    navigate("/checkout-success");
+  };
 
   return (
-    <div className="p-4 max-w-2xl mx-auto">
-      <h1 className="text-2xl font-bold mb-4">Your Cart</h1>
-      <ul>
-        {cart.map((product, index) => (
-          <li
-            key={index}
-            className="flex items-center justify-between border-b py-2"
-          >
-            <div className="flex items-center gap-4">
-              <img
-                src={product.image?.url}
-                alt={product.title}
-                className="w-16 h-16 object-cover rounded"
-              />
-              <div>
-                <h2 className="font-semibold">{product.title}</h2>
-                <p>${product.price}</p>
-              </div>
-            </div>
-            <button
-              onClick={() => removeFromCart(product.cartItemId)}
-              className="bg-red-600 text-white px-3 py-1 rounded hover:bg-red-700"
-            >
-              Remove
-            </button>
-          </li>
-        ))}
-      </ul>
-      <div className="mt-4 flex gap-4">
-        <Link
-          to="/products"
-          className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
-        >
-          Continue Shopping
-        </Link>
+    <div className="max-w-2xl mx-auto p-6 bg-white shadow rounded">
+      <h1 className="text-2xl font-bold mb-6">Checkout</h1>
 
-        <Link
-          to="/checkout-success"
-          className="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700"
-        >
-          Complete Checkout
-        </Link>
-      </div>
+      {cart.length === 0 ? (
+        <p className="text-gray-600">Your cart is empty.</p>
+      ) : (
+        <>
+          <ul className="mb-6 divide-y">
+            {cart.map((item) => (
+              <li key={item.cartItemId} className="py-3 flex justify-between">
+                <span>{item.title}</span>
+                <span>{item.price} NOK</span>
+              </li>
+            ))}
+          </ul>
+
+          <div className="flex justify-between font-semibold text-lg mb-6">
+            <span>Total:</span>
+            <span>{totalPrice} NOK</span>
+          </div>
+
+          <div className="flex gap-4">
+            <Link
+              to="/products"
+              className="flex-1 text-center bg-blue-600 text-white py-2 rounded hover:bg-blue-700"
+            >
+              Continue Shopping
+            </Link>
+            <button
+              onClick={handleCheckout}
+              className="flex-1 bg-green-600 text-white py-2 rounded hover:bg-green-700"
+            >
+              Complete Checkout
+            </button>
+          </div>
+        </>
+      )}
     </div>
   );
 }

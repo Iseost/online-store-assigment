@@ -1,30 +1,43 @@
 // src/context/CartContext.jsx
-import React, { createContext, useState, useContext } from "react";
-import { v4 as uuidv4 } from "uuid"; // trenger å installere uuid-pakken: npm install uuid
+import React, { createContext, useContext, useReducer } from "react";
+import { v4 as uuidv4 } from "uuid";
 
 const CartContext = createContext();
 
+const initialState = [];
+
+function cartReducer(state, action) {
+  switch (action.type) {
+    case "ADD_TO_CART":
+      return [
+        ...state,
+        { ...action.payload, cartItemId: uuidv4() }, // unik id for hver forekomst
+      ];
+    case "REMOVE_FROM_CART":
+      return state.filter((item) => item.cartItemId !== action.payload);
+    case "CLEAR_CART":
+      return []; // tømming av handlekurv
+    default:
+      return state;
+  }
+}
+
 export function CartProvider({ children }) {
-  const [cart, setCart] = useState([]);
+  const [cart, dispatch] = useReducer(cartReducer, initialState);
 
-  // Legger til produkt med unikt cartItemId
-  const addToCart = (product) => {
-    const cartItem = { ...product, cartItemId: uuidv4() };
-    setCart((prevItems) => [...prevItems, cartItem]);
-  };
+  const addToCart = (product) =>
+    dispatch({ type: "ADD_TO_CART", payload: product });
 
-  // Fjerner kun det produktet man trykker på
-  const removeFromCart = (cartItemId) => {
-    setCart((prevItems) =>
-      prevItems.filter((item) => item.cartItemId !== cartItemId)
-    );
-  };
+  const removeFromCart = (cartItemId) =>
+    dispatch({ type: "REMOVE_FROM_CART", payload: cartItemId });
+
+  const clearCart = () => dispatch({ type: "CLEAR_CART" });
 
   const cartCount = cart.length;
 
   return (
     <CartContext.Provider
-      value={{ cart, addToCart, removeFromCart, cartCount }}
+      value={{ cart, addToCart, removeFromCart, clearCart, cartCount }}
     >
       {children}
     </CartContext.Provider>
