@@ -15,16 +15,25 @@ export default function ContactPage() {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
+
   const validate = () => {
     const newErrors = {};
-    if (!formData.fullName) newErrors.fullName = "Full name is required";
+    if (!formData.fullName) newErrors.fullName = "Full Name is required";
+    else if (formData.fullName.length < 3)
+      newErrors.fullName = "Full Name must be at least 3 characters";
+
     if (!formData.subject) newErrors.subject = "Subject is required";
-    if (!formData.email) {
-      newErrors.email = "Email is required";
-    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-      newErrors.email = "Email is invalid";
-    }
+    else if (formData.subject.length < 3)
+      newErrors.subject = "Subject must be at least 3 characters";
+
+    if (!formData.email) newErrors.email = "Email is required";
+    else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(formData.email))
+      newErrors.email = "Invalid email address";
+
     if (!formData.body) newErrors.body = "Message body is required";
+    else if (formData.body.length < 3)
+      newErrors.body = "Message body must be at least 3 characters";
+
     return newErrors;
   };
 
