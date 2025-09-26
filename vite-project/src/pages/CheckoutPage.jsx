@@ -52,13 +52,13 @@ export default function CheckoutPage() {
           <div className="flex gap-4">
             <Link
               to="/products"
-              className="flex-1 text-center bg-[#F2A65A] hover:bg-[#E6893B] text-white py-2 rounded"
+              className="flex-1 text-center bg-[#F2A65A] hover:bg-[#E6893B] text-white font-semibold py-2 rounded"
             >
               Continue Shopping
             </Link>
             <button
               onClick={handleCheckout}
-              className="flex-1 bg-[#F28B82] hover:bg-[#E66B5C] text-white py-2 rounded"
+              className="flex-1 bg-[#F28B82] hover:bg-[#E66B5C] text-white font-semibold py-2 rounded"
             >
               Complete Checkout
             </button>
