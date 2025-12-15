@@ -9,7 +9,6 @@ export function useProducts() {
 
     useEffect(() => {
         let isMounted = true;
-
         async function fetchData() {
             try {
                 const data = await getProducts();
@@ -20,13 +19,10 @@ export function useProducts() {
                 if (isMounted) setLoading(false);
             }
         }
-
         fetchData();
-
         return () => {
             isMounted = false;
         };
     }, []);
-
     return { products, loading, error };
 }
