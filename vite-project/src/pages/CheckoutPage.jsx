@@ -2,6 +2,11 @@
 import { useCart } from "../context/CartContext";
 import { useNavigate, Link } from "react-router-dom";
 
+/**
+ * Checkout page that displays cart items, allows removal, and completes checkout.
+ * Clears the cart and navigates to success on completion.
+ * @returns {JSX.Element}
+ */
 export default function CheckoutPage() {
   const { cart, clearCart, removeFromCart } = useCart();
   const navigate = useNavigate();

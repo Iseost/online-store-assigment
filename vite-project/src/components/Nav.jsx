@@ -1,5 +1,9 @@
 import { Link } from "react-router-dom";
 
+/**
+ * Primary site navigation links.
+ * @returns {JSX.Element}
+ */
 export function Nav() {
   return (
     <nav className="flex gap-6">

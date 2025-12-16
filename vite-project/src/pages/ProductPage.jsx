@@ -3,6 +3,10 @@ import { useProducts } from "../hooks/useProducts";
 import ProductCard from "../components/ProductCard";
 import SearchBar from "../components/SearchBar";
 
+/**
+ * Products listing page. Fetches and displays all products with a search bar.
+ * @returns {JSX.Element}
+ */
 export default function ProductPage() {
   const { products, loading, error } = useProducts();
   if (loading) return <p>Loading products...</p>;

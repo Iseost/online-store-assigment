@@ -1,5 +1,11 @@
 import { Link } from "react-router-dom";
 
+/**
+ * Displays a card for a single product including image, title,
+ * price and a link to the product details page.
+ * @param {{product: {id?: string|number, title?: string, price?: number, image?: {url?: string}}}} props - The product to render.
+ * @returns {JSX.Element}
+ */
 export default function ProductCard({ product = {} }) {
   const imageUrl = product.image?.url || "https://via.placeholder.com/150";
   const title = product.title || "No Title";

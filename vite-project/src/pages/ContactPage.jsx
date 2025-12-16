@@ -1,6 +1,11 @@
 import React, { useState } from "react";
 
 // Full name, Subject, Email, Body, Submit button
+/**
+ * Contact page with a simple form and validations for
+ * full name, subject, email, and message body.
+ * @returns {JSX.Element}
+ */
 export default function ContactPage() {
   const [formData, setFormData] = useState({
     fullName: "",

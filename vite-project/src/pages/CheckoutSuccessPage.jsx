@@ -1,6 +1,11 @@
 // src/pages/CheckoutSuccessPage.jsx
 import { Link } from "react-router-dom";
 
+/**
+ * Confirmation page shown after a successful checkout.
+ * Provides a link back to products.
+ * @returns {JSX.Element}
+ */
 export default function CheckoutSuccessPage() {
   return (
     <div className="max-w-xl mx-auto p-6 bg-white shadow rounded text-center">

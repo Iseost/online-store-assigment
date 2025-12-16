@@ -2,6 +2,10 @@
 import { useCart } from "../context/CartContext";
 import { Link } from "react-router-dom";
 
+/**
+ * Cart icon with a badge showing the number of items in the cart.
+ * @returns {JSX.Element}
+ */
 export function CartIcon() {
   const { cartCount } = useCart();
 

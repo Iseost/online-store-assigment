@@ -2,6 +2,11 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useProducts } from "../hooks/useProducts";
 
+/**
+ * Search bar for filtering products by title. Displays a dropdown
+ * of matching products and navigates to the selected product.
+ * @returns {JSX.Element}
+ */
 export default function SearchBar() {
   const [query, setQuery] = useState("");
   const [showResults, setShowResults] = useState(false);

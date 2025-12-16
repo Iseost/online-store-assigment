@@ -22,6 +22,11 @@ function cartReducer(state, action) {
   }
 }
 
+/**
+ * Provides cart state and actions to descendants.
+ * @param {{children: import('react').ReactNode}} props - The subtree to receive cart context.
+ * @returns {JSX.Element}
+ */
 export function CartProvider({ children }) {
   const [cart, dispatch] = useReducer(cartReducer, initialState);
 
@@ -44,6 +49,16 @@ export function CartProvider({ children }) {
   );
 }
 
+/**
+ * Access the cart context.
+ * @returns {{
+ *  cart: Array<object>,
+ *  addToCart: (product: object) => void,
+ *  removeFromCart: (cartItemId: string) => void,
+ *  clearCart: () => void,
+ *  cartCount: number
+ * }}
+ */
 export function useCart() {
   const context = useContext(CartContext);
   if (!context) {

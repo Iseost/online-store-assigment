@@ -3,6 +3,11 @@ import { useEffect, useState } from "react";
 import { getProduct } from "../api/productsApi.jsx";
 import { useCart } from "../context/CartContext"; // <--- husk import
 
+/**
+ * Product detail page. Loads a single product based on the route `id`
+ * and allows adding the product to the cart.
+ * @returns {JSX.Element}
+ */
 export default function ProductDetailPage() {
   const { id } = useParams();
   const { addToCart } = useCart(); // <-- her!
