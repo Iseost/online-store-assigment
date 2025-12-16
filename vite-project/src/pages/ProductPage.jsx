@@ -1,7 +1,5 @@
-import React from "react";
 import { useProducts } from "../hooks/useProducts";
 import ProductCard from "../components/ProductCard";
-import SearchBar from "../components/SearchBar";
 
 /**
  * Products listing page. Fetches and displays all products with a search bar.

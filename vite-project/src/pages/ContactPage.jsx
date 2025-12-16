@@ -1,6 +1,4 @@
-import React, { useState } from "react";
-
-// Full name, Subject, Email, Body, Submit button
+import { useState } from "react";
 /**
  * Contact page with a simple form and validations for
  * full name, subject, email, and message body.
