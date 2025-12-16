@@ -126,7 +126,7 @@ export default function ContactPage() {
               errors.body ? "border-red-500" : "border-gray-300"
             } p-2 rounded`}
             rows="5"
-          ></textarea>
+          />
           {errors.body && (
             <p className="text-red-500 text-sm mt-1">{errors.body}</p>
           )}
